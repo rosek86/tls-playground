@@ -115,6 +115,7 @@ export class TLSPlaintext extends TLSBase {
         break;
       case ContentType.Alert:
         plainText.alert = Alert.parse(fragment);
+        break;
       default:
         console.log(`unknown content type: ${plainText.contentType}`);
         break;

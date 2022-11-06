@@ -76,7 +76,7 @@ export abstract class Extension extends TLSBase {
 
   public override log(padding = 0): string {
     return this.pad(padding,
-      `${ExtensionType[this.type].padEnd(40, ' ')} ` +
+      `${ExtensionType[this.type]?.padEnd(40, ' ')} ` +
       `(${this.type.toString().padEnd(2, ' ')} = 0x${this.type.toString(16).padStart(2, '0')})\n`);
   }
 

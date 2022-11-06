@@ -152,7 +152,7 @@ export class ClientHello extends TLSBase {
 
     hello.random = b.slice(i, i + 32); i += 32;
 
-    const legacySessionIdLength = b[i]; i += 1;
+    const legacySessionIdLength = b.readUInt8(i); i += 1;
     hello.legacySessionId = b.slice(i, i + legacySessionIdLength);
     i += legacySessionIdLength;
 
@@ -162,10 +162,10 @@ export class ClientHello extends TLSBase {
       hello.cipherSuites.push(b.readUInt16BE(i));
     }
 
-    const legacyCompressionMethodsLength = b[i]; i += 1;
+    const legacyCompressionMethodsLength = b.readUInt8(i); i += 1;
     hello.legacyCompressionMethods = [];
     for (let j = 0; j < legacyCompressionMethodsLength; j += 1, i += 1) {
-      hello.legacyCompressionMethods.push(b[i]);
+      hello.legacyCompressionMethods.push(b.readUInt8(i));
     }
 
     const extensionsLength = b.readUInt16BE(i); i += 2;

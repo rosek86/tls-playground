@@ -60,8 +60,8 @@ export class Alert extends TLSBase {
 
   public static parse(b: Buffer): Alert {
     const alert = new Alert();
-    alert.level = b[0];
-    alert.description = b[1];
+    alert.level = b.readUInt8(0);
+    alert.description = b.readUInt8(1);
     return alert;
   }
 }

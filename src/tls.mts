@@ -142,7 +142,7 @@ console.log(tlsPlaintext3.serialize().length);
 
 const server = tls.createServer({
   requestCert: false,
-}, (socket) => {
+}, () => {
   // console.log('server connected',
   //             socket.authorized ? 'authorized' : 'unauthorized');
   // socket.write('welcome!\n');
